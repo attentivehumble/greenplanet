@@ -63,67 +63,7 @@
     </footer>
 
     <script>
-        function validateForm(event) {
-            // Остановить отправку формы для валидации
-            event.preventDefault();
-
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const message = document.getElementById('message').value;
-            const nameError = document.getElementById('nameError');
-            const emailError = document.getElementById('emailError');
-            const messageError = document.getElementById('messageError');
-            const formMessage = document.getElementById('formMessage');
-
-            // Очистить предыдущие ошибки
-            nameError.textContent = '';
-            emailError.textContent = '';
-            messageError.textContent = '';
-            formMessage.textContent = '';
-
-            let isValid = true;
-
-            // Проверка на пустые поля
-            if (!name) {
-                nameError.textContent = "Пожалуйста, введите ваше имя.";
-                isValid = false;
-            }
-
-            if (!email) {
-                emailError.textContent = "Пожалуйста, введите ваш Email.";
-                isValid = false;
-            }
-
-            if (!message) {
-                messageError.textContent = "Пожалуйста, введите сообщение.";
-                isValid = false;
-            }
-
-            // Проверка на правильность email
-            const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
-            if (email && !emailRegex.test(email)) {
-                emailError.textContent = "Введите корректный email.";
-                isValid = false;
-            }
-
-            // Проверка длины сообщения
-            if (message.length < 10) {
-                messageError.textContent = "Сообщение должно содержать хотя бы 10 символов.";
-                isValid = false;
-            }
-
-            if (isValid) {
-                // Если все проверки пройдены
-                formMessage.textContent = "Спасибо за ваше сообщение! Мы скоро с вами свяжемся.";
-                formMessage.style.color = "white";
-
-                // Отправка формы через Formspree
-                document.getElementById('contactForm').submit();
-            } else {
-                formMessage.textContent = "Пожалуйста, исправьте ошибки в форме.";
-                formMessage.style.color = "#8B0000"
-            }
-        }
+        function validateForm(t){t.preventDefault();let e=document.getElementById("name").value,n=document.getElementById("email").value,l=document.getElementById("message").value,o=document.getElementById("nameError"),m=document.getElementById("emailError"),a=document.getElementById("messageError"),r=document.getElementById("formMessage");o.textContent="",m.textContent="",a.textContent="",r.textContent="";let g=!0;e||(o.textContent="Пожалуйста, введите ваше имя.",g=!1),n||(m.textContent="Пожалуйста, введите ваш Email.",g=!1),l||(a.textContent="Пожалуйста, введите сообщение.",g=!1),n&&!/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/.test(n)&&(m.textContent="Введите корректный email.",g=!1),l.length<10&&(a.textContent="Сообщение должно содержать хотя бы 10 символов.",g=!1),g?(r.textContent="Спасибо за ваше сообщение! Мы скоро с вами свяжемся.",r.style.color="white",document.getElementById("contactForm").submit()):(r.textContent="Пожалуйста, исправьте ошибки в форме.",r.style.color="#8B0000")}
     </script>
 
 </body>

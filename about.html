@@ -34,21 +34,7 @@
         <p>&copy; 2025 Зелёная планета</p>
     </footer>
     <script>
-        const button = document.getElementById('clickButton');
-        const counterText = document.getElementById('counterText');
-
-        let count = 0;
-
-        button.addEventListener('click', function() {
-            count++;
-            counterText.textContent = `Ты помог планете ${count} ${getTimes(count)}`;
-        });
-
-        function getTimes(number) {
-            if (number % 10 === 1 && number % 100 !== 11) return 'раз';
-            if ([2, 3, 4].includes(number % 10) && ![12, 13, 14].includes(number % 100)) return 'раза';
-            return 'раз';
-        }
+        const button=document.getElementById("clickButton"),counterText=document.getElementById("counterText");let count=0;function getTimes(t){return t%10==1&&t%100!=11?"раз":[2,3,4].includes(t%10)&&![12,13,14].includes(t%100)?"раза":"раз"}button.addEventListener("click",function(){count++,counterText.textContent=`Ты помог планете ${count} ${getTimes(count)}`});
     </script>
 </body>
 </html>
