@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакты - Зелёная планета</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .error {
+            color: #8B0000;
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+        .success {
+            color: #318096;
+            font-size: 1em;
+            margin-top: 10px;
+        }
+    </style>
+    
+    
+</head>
+<body>
+
+    <header>
+        <h1>Зелёная планета</h1>
+        <nav>
+            <a href="index.html" class="btn">Главная</a>
+            <a href="about.html" class="btn">О проекте</a>
+            <a href="works.html" class="btn">Экологические проекты</a>
+            <a href="files.html" class="btn">Файлы</a>
+            <a href="contacts.html" class="btn">Контакты</a>
+            <a href="links.html" class="btn">Полезные ссылки</a>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <h2>Свяжитесь с нами!</h2>
+            <p>Если у вас есть вопросы или предложения, напишите нам через форму ниже.</p>
+
+            <form id="contactForm" action="https://formspree.io/f/mvgzjnnl" method="POST" onsubmit="return validateForm(event)">
+                <label for="name">Ваше имя:</label>
+                <input type="text" id="name" name="name" required>
+                <div id="nameError" class="error"></div>
+
+                <label for="email">Ваш Email:</label>
+                <input type="email" id="email" name="email" required>
+                <div id="emailError" class="error"></div>
+
+                <label for="message">Сообщение:</label>
+                <textarea id="message" name="message" required></textarea>
+                <div id="messageError" class="error"></div>
+
+                <button type="submit">Отправить</button>
+            </form>
+            <p id="formMessage" class="success"></p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Зелёная планета</p>
+    </footer>
+
+    <script>
+        function validateForm(event) {
+            // Остановить отправку формы для валидации
+            event.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            const nameError = document.getElementById('nameError');
+            const emailError = document.getElementById('emailError');
+            const messageError = document.getElementById('messageError');
+            const formMessage = document.getElementById('formMessage');
+
+            // Очистить предыдущие ошибки
+            nameError.textContent = '';
+            emailError.textContent = '';
+            messageError.textContent = '';
+            formMessage.textContent = '';
+
+            let isValid = true;
+
+            // Проверка на пустые поля
+            if (!name) {
+                nameError.textContent = "Пожалуйста, введите ваше имя.";
+                isValid = false;
+            }
+
+            if (!email) {
+                emailError.textContent = "Пожалуйста, введите ваш Email.";
+                isValid = false;
+            }
+
+            if (!message) {
+                messageError.textContent = "Пожалуйста, введите сообщение.";
+                isValid = false;
+            }
+
+            // Проверка на правильность email
+            const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+            if (email && !emailRegex.test(email)) {
+                emailError.textContent = "Введите корректный email.";
+                isValid = false;
+            }
+
+            // Проверка длины сообщения
+            if (message.length < 10) {
+                messageError.textContent = "Сообщение должно содержать хотя бы 10 символов.";
+                isValid = false;
+            }
+
+            if (isValid) {
+                // Если все проверки пройдены
+                formMessage.textContent = "Спасибо за ваше сообщение! Мы скоро с вами свяжемся.";
+                formMessage.style.color = "white";
+
+                // Отправка формы через Formspree
+                document.getElementById('contactForm').submit();
+            } else {
+                formMessage.textContent = "Пожалуйста, исправьте ошибки в форме.";
+                formMessage.style.color = "#8B0000"
+            }
+        }
+    </script>
+
+</body>
+</html>
