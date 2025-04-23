@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Экологические проекты">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self';">
     <title>Экологические проекты</title>
     <link rel="stylesheet" href="style.css">
 </head>
@@ -39,10 +40,24 @@
                 <td>Организация массовых посадок деревьев.</td>
             </tr>
         </table>
+
+        <!-- 🔐 Форма ввода -->
+        <h3>Оставьте свой комментарий</h3>
+        <input type="text" id="userInput" placeholder="Введите комментарий" />
+        <button onclick="handleInput()">Отправить</button>
+
+        <p><strong>Ваш комментарий:</strong></p>
+        <p id="output"></p>
     </main>
 
     <footer>
         <p>&copy; 2025 Зелёная планета</p>
     </footer>
+
+    <!-- 🔐 Скрипт с безопасным выводом -->
+    <script>
+        function handleInput(){let t=document.getElementById("userInput").value,e=document.getElementById("output");e.textContent=t}
+    </script>
 </body>
 </html>
+
